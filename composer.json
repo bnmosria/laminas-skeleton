@@ -2,21 +2,18 @@
     "authors": [
         {
             "name": "Benjamin Osoria Peralta",
-            "email": "bnmosria@hotmail.com",
-            "role": "Owner"
+            "email": "bnmosria@hotmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Command\\": "src/Command/src/",
-            "Task\\": "src/Task/src/",
             "Home\\": "src/Home/src/",
-            "SerializerAdapter\\": "src/SerializerAdapter/src/"
+            "Task\\": "src/Task/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Task\\Test\\": "src/Category/test"
+            "Task\\Test\\": "src/Task/test"
         }
     },
     "description": "A minimalistic and opinionated laminas api starter",

@@ -31,9 +31,6 @@ return [
                 'query_cache'    => 'array',
                 'metadata_cache' => 'array',
                 'proxy_dir'      => __DIR__ . '/../../data/cache/DoctrineProxy',
-                'types'          => [
-                   // \Ramsey\Uuid\Doctrine\UuidType::NAME => \Ramsey\Uuid\Doctrine\UuidType::class,
-                ]
             ],
         ],
         'connection'    => [
@@ -53,20 +50,6 @@ return [
                 'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
                 'cache' => 'array',
                 'paths' => [__DIR__ . '/../../src/Database/src/Entity'],
-            ],
-        ],
-        'fixture' => [
-            'jobs_fixtures' => [
-                'object_manager' => 'doctrine.entitymanager.orm_default',
-                'invokables'     => [
-                    \Database\Fixture\JobTypeFixture::class     => \Database\Fixture\JobTypeFixture::class,
-                    \Database\Fixture\LocationFixture::class    => \Database\Fixture\LocationFixture::class,
-                    \Database\Fixture\JobCategoryFixture::class => \Database\Fixture\JobCategoryFixture::class,
-                    \Database\Fixture\UsersFixture::class       => \Database\Fixture\UsersFixture::class,
-
-                    // must be always the last config item
-                    \Database\Fixture\JobPostFixture::class     => \Database\Fixture\JobPostFixture::class,
-                ]
             ],
         ],
     ],

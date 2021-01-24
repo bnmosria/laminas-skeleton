@@ -77,19 +77,5 @@ return [
                     'paths' => [__DIR__ . '/../../src/Database/src/Entity'],
                 ],
             ],
-            'fixture' => [
-                'jobs_fixtures' => [
-                    'object_manager' => 'doctrine.entitymanager.orm_default',
-                    'invokables' => [
-                        \Database\Fixture\JobTypeFixture::class => \Database\Fixture\JobTypeFixture::class,
-                        \Database\Fixture\LocationFixture::class => \Database\Fixture\LocationFixture::class,
-                        \Database\Fixture\JobCategoryFixture::class => \Database\Fixture\JobCategoryFixture::class,
-                        \Database\Fixture\UsersFixture::class  => \Database\Fixture\UsersFixture::class,
-
-                        // must be always the last config item
-                        \Database\Fixture\JobPostFixture::class => \Database\Fixture\JobPostFixture::class,
-                    ]
-                ],
-            ],
         ],
 ];
