@@ -1,0 +1,95 @@
+<?php
+/**
+ * File required to allow enablement of development mode.
+ *
+ * For use with the laminas-development-mode tool.
+ *
+ * Usage:
+ *  $ composer development-disable
+ *  $ composer development-enable
+ *  $ composer development-status
+ *
+ * DO NOT MODIFY THIS FILE.
+ *
+ * Provide your own development-mode settings by editing the file
+ * `config/autoload/development.local.php.dist`.
+ *
+ * Because this file is aggregated last, it simply ensures:
+ *
+ * - The `debug` flag is _enabled_.
+ * - Configuration caching is _disabled_.
+ */
+
+declare(strict_types=1);
+
+use Laminas\ConfigAggregator\ConfigAggregator;
+use Mezzio\Container;
+use Mezzio\Middleware\ErrorResponseGenerator;
+
+return [
+    'debug' => true,
+    ConfigAggregator::ENABLE_CACHE => false,
+    'dependencies' => [
+        'invokables' => [
+        ],
+        'factories'  => [
+            ErrorResponseGenerator::class       => Container\WhoopsErrorResponseGeneratorFactory::class,
+            'Mezzio\Whoops'            => Container\WhoopsFactory::class,
+            'Mezzio\WhoopsPageHandler' => Container\WhoopsPageHandlerFactory::class,
+        ],
+    ],
+    'whoops' => [
+        'json_exceptions' => [
+            'display'    => true,
+            'show_trace' => true,
+            'ajax_only'  => true,
+        ],
+    ],
+    'doctrine' => [
+            'configuration' => [
+                'orm_default' => [
+                    'query_cache'    => 'array',
+                    'metadata_cache' => 'array',
+                    'proxy_dir'      => __DIR__ . '/../../data/cache/DoctrineProxy',
+                ],
+            ],
+            'connection'    => [
+                'orm_default' => [
+                    'params' => [
+                        'host'     => $_SERVER['MYSQL_HOST'],
+                        'port'     => $_SERVER['MYSQL_PORT'],
+                        'user'     => $_SERVER['MYSQL_USER'],
+                        'password' => $_SERVER['MYSQL_ROOT_PASSWORD'],
+                        'dbname'   => $_SERVER['MYSQL_DATABASE'],
+                    ]
+                ],
+            ],
+            'driver'        => [
+                'orm_default' => [
+                    'class'   => \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain::class,
+                    'drivers' => [
+                        'Database\Entity' => 'entities',
+                    ],
+                ],
+                'entities'    => [
+                    'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
+                    'cache' => 'array',
+                    'paths' => [__DIR__ . '/../../src/Database/src/Entity'],
+                ],
+            ],
+            'fixture' => [
+                'jobs_fixtures' => [
+                    'object_manager' => 'doctrine.entitymanager.orm_default',
+                    'invokables' => [
+                        \Database\Fixture\JobTypeFixture::class => \Database\Fixture\JobTypeFixture::class,
+                        \Database\Fixture\LocationFixture::class => \Database\Fixture\LocationFixture::class,
+                        \Database\Fixture\JobCategoryFixture::class => \Database\Fixture\JobCategoryFixture::class,
+                        \Database\Fixture\UsersFixture::class  => \Database\Fixture\UsersFixture::class,
+
+                        // must be always the last config item
+                        \Database\Fixture\JobPostFixture::class => \Database\Fixture\JobPostFixture::class,
+                    ]
+                ],
+            ],
+        ],
+];

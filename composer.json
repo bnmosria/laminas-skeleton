@@ -1,0 +1,73 @@
+{
+    "authors": [
+        {
+            "name": "Benjamin Osoria Peralta",
+            "email": "bnmosria@hotmail.com",
+            "role": "Owner"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Command\\": "src/Command/src/",
+            "Task\\": "src/Task/src/",
+            "Home\\": "src/Home/src/",
+            "SerializerAdapter\\": "src/SerializerAdapter/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Task\\Test\\": "src/Category/test"
+        }
+    },
+    "description": "A minimalistic and opinionated laminas api starter",
+    "homepage": "https://github.com/bnmosria",
+    "keywords": [
+        "laminas skeleton",
+        "api starter"
+    ],
+    "license": "BSD-3-Clause",
+    "name": "bnmosria/laminas-skeleton",
+    "require": {
+        "php": "^7.4",
+        "doctrine/doctrine-orm-module": "^3.0",
+        "gedmo/doctrine-extensions": "^2.4",
+        "jms/serializer": "^3.3",
+        "laminas/laminas-crypt": "^3.2",
+        "laminas/laminas-filter": "^2.7",
+        "laminas/laminas-http": "^2.6",
+        "laminas/laminas-hydrator": "^3.0",
+        "laminas/laminas-json": "^3.0",
+        "laminas/laminas-log": "^2.9",
+        "laminas/laminas-session": "^2.8",
+        "laminas/laminas-config": "^3.2",
+        "laminas/laminas-config-aggregator": "^1.1",
+        "laminas/laminas-diactoros": "^1.8",
+        "laminas/laminas-form": "^2.14",
+        "laminas/laminas-httphandlerrunner": "^1.0",
+        "laminas/laminas-servicemanager": "^3.3",
+        "laminas/laminas-validator": "^2.12",
+        "laminas/laminas-config-aggregator-modulemanager": "^1.0",
+        "mezzio/mezzio": "^3.0",
+        "mezzio/mezzio-helpers": "^5.1",
+        "mezzio/mezzio-laminasrouter": "^3.0",
+        "mezzio/mezzio-problem-details": "^1.1",
+        "reinfi/zf-dependency-injection": "^4.0",
+        "tuupola/slim-jwt-auth": "^3.4"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.2",
+        "laminas/laminas-developer-tools": "^1.1",
+        "nelmio/alice": "^3.7",
+        "theofidry/alice-data-fixtures": "^1.1",
+        "doctrine/data-fixtures": "^1.4",
+        "phpunit/phpunit": "^9.2",
+        "phpspec/prophecy-phpunit": "^2.0"
+    },
+    "scripts": {
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "integration": "phpunit --testsuite integration",
+        "unit": "phpunit --testsuite unit"
+    },
+    "type": "project"
+}
